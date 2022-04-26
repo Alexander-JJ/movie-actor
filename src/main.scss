@@ -1,0 +1,54 @@
+.card {
+  width: 250px;
+  background-color: #e1e5f2;
+  padding: 5px;
+  border-radius: 3px;
+  transition: 0.2s;
+  box-shadow: none;
+  margin: 10px;
+  align-self: flex-start;
+  min-height: 555px;
+
+  img {
+    max-width: 100%;
+  }
+  &:hover {
+    box-shadow: 2px 2px 2px 2px #0000003b;
+    transform: scale(1.005);
+  }
+}
+
+html * {
+  font-size: 16px;
+  line-height: 1.625;
+  font-family: Nunito, sans-serif;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 0px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+aside {
+  width: 300px;
+}
+
+#results {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+body {
+  display: flex;
+}
+
+#actor_input input {
+  margin-top: 3px;
+}
