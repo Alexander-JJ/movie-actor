@@ -5,7 +5,8 @@ import "./main.scss";
 const API_KEY = "5951b0e75bc5b7e7edec1d492ae68521";
 const POSTER_BASE_URL = "https://image.tmdb.org/t/p/original";
 
-// #1 is a function that selects one element, #2 is a function that selects multiple elements and adds them to an array.
+// #1 is a function that selects one element
+// #2 is a function that selects multiple elements and adds them to an array.
 const $ = (el) => document.querySelector(el);
 const $$ = (el) => Array.from(document.querySelectorAll(el));
 
