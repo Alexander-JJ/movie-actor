@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-permissions: 
+permissions:
   contents: write
 jobs:
   build-and-deploy:
@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install
+        run: npm install
 
       - name: Build
         run: npm run build
