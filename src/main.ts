@@ -5,7 +5,7 @@ import "./main.scss";
 const API_KEY = "5951b0e75bc5b7e7edec1d492ae68521";
 const POSTER_BASE_URL = "https://image.tmdb.org/t/p/original";
 
-// #1 is a function that selects one element
+// #1 is a function that selects a single element.
 // #2 is a function that selects multiple elements and adds them to an array.
 const $ = (el) => document.querySelector(el);
 const $$ = (el) => Array.from(document.querySelectorAll(el));
@@ -26,7 +26,7 @@ async function getActorMovieIntersection(actorNames: string[]) {
 }
 
 /**
- * @param actorName
+ * @param actorName is a string
  * @returns Gets list of movies for one actor
  */
 async function getMoviesByActorName(actorName: string) {
@@ -36,7 +36,7 @@ async function getMoviesByActorName(actorName: string) {
 }
 
 /**
- * Gets list of actors and returns first actor
+ * Gets list of actors and returns first actor from list
  * @param actorName is a string
  * @returns An actor from the top of a list of searched actors
  */
@@ -56,7 +56,7 @@ async function getActor(actorName: string): Promise<Actor> {
 
 /**
  * Gets list of movies from actor's ID
- * @param actorID
+ * @param actorID is a number
  * @returns A list of movies in which an actor is in the cast
  */
 async function getMovieList(actorID: number): Promise<Movie[]> {
