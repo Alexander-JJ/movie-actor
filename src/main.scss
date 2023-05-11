@@ -1,3 +1,21 @@
+.container {  display: grid;
+  grid-template-columns: 0.3fr 1.7fr 1fr;
+  grid-template-rows: 0.2fr 1.8fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "banner banner banner"
+    "input results results"
+    "input results results";
+}
+
+.banner { grid-area: banner; }
+
+.input { grid-area: input; }
+
+.results { grid-area: results; }
+
+
 .card {
   width: 250px;
   background-color: #e1e5f2;

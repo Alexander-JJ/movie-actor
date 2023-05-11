@@ -44,7 +44,7 @@ async function getActor(actorName: string): Promise<Actor> {
   let result = await fetch(
     `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
       actorName
-    )}&page=1&include_adult=true`
+    )}&page=1&include_adult=false`
   );
   let actorList = await result.json();
   if (actorList.results.length === 0) {
