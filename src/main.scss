@@ -9,9 +9,21 @@
     "input results results";
 }
 
-.banner { grid-area: banner; }
+.banner { 
+  grid-area: banner;
+  background-color: #e1e5f2;
+  padding: 5px;
+  box-shadow: 2px 2px 2px 2px #0000003b;
+  margin: 10px;
+  }
 
-.input { grid-area: input; }
+.input {
+  grid-area: input;
+  background-color: #e1e5f2;
+  padding: 5px;
+  box-shadow: 2px 2px 2px 2px #0000003b;
+  margin: 10px;
+}
 
 .results { grid-area: results; }
 
@@ -78,6 +90,7 @@ aside {
   width: 300px;
 }
 
+/*
 #results {
   display: flex;
   align-content: flex-start;
@@ -88,6 +101,7 @@ aside {
 body {
   display: flex;
 }
+*/
 
 #actor_input input {
   margin-top: 5px;
