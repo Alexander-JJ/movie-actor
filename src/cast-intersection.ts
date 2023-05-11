@@ -14,7 +14,7 @@ const $$ = (el) => Array.from(document.querySelectorAll(el));
  * @param {Array<String>} movieNames List of actor's names
  * @returns A list of movies that are common between two or more actors
  */
-async function getActorMovieIntersection(movieNames: string[]) {
+async function getCastMovieIntersection(movieNames: string[]) {
   let castMasterList: Cast[][] = [];
   for (const movieName of movieNames) {
     let cast = await getCastByMovieName(movieName);
@@ -95,7 +95,7 @@ $("#btnSubmit").addEventListener("click", async () => {
   let inputFields = $$("#movie_input input");
   let movieNames = inputFields.map((f) => f.value.trim());
   if (movieNames.includes("")) return;
-  let intersection = await getActorMovieIntersection(movieNames);
+  let intersection = await getCastMovieIntersection(movieNames);
   if (intersection.length === 0) {
     $("#results").innerHTML = "No cast found for selected movies.";
   } else {
