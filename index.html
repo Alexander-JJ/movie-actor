@@ -10,6 +10,13 @@
     <div class="container">
     <div class="banner">
       <h1>Movie Actor Cross Reference</h1>
+      <!-- View switcher controls -->
+      <div id="viewSwitcher">
+        <input class="radioButton" id="rbCardView" name="view" type="radio" value="card" checked="checked">
+        <label for="rbCardView">Card</label>
+        <input class="radioButton" id="rbTableView" name="view" type="radio" value="table">
+        <label for="rbTableView">Table</label>
+      </div>
     </div>
     <div class="input">
       <button class="button" id="btnSubtract">
@@ -18,14 +25,26 @@
       <button class="button" id="btnAdd">
         +
       </button>
-      <button class ="button" id="btnSubmit">Submit</button>
+      <button class="button" id="btnSubmit">Submit</button>
       <div id="actor_input">
         <input type="text" placeholder="Input Actor Name" />
         <input type="text" placeholder="Input Actor Name" />
       </div>
     </div>
-    <div class="results">
-      <main id="results"></main>
+    <div id="resultsCard">
+    </div>
+    <div id="resultsTable" style="display: none">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rlease Date</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

@@ -2,6 +2,8 @@ import { intersectionBy } from "lodash";
 import type { Movie, Actor } from "./types";
 import "./main.scss";
 
+type State = {movies: Movie[], view: "card" | "table"}
+let state:State = {movies:[], view:"card"}
 const API_KEY = "5951b0e75bc5b7e7edec1d492ae68521";
 const POSTER_BASE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -72,9 +74,9 @@ async function getMovieList(actorID: number): Promise<Movie[]> {
  * @param movie is an object
  * @returns HTML card with API data as a string
  */
-const getMovieHTML = (movie: Movie) =>
+const getMovieCardHTML = (movie: Movie) => 
   `
-  <div class="card">
+<div class="card">
   <section>
     <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">
     <img src="${POSTER_BASE_URL}${movie.poster_path}"/>
@@ -89,6 +91,20 @@ const getMovieHTML = (movie: Movie) =>
 </div>
 `;
 
+/**
+ * Converts movie data to HTML
+ * @param movie is an object
+ * @returns HTML table with API data as a string
+ */
+const getMovieTableHTML = (movie: Movie) =>
+  `
+<tr class="tablerow">
+  <td><a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">${movie.title}</a></td>
+  <td>${movie.release_date}</td>
+  <td>${movie.vote_average * 10}%</td>
+</tr>
+`;
+
 // Submit button code
 // On click, selects the input fields' input,
 $("#btnSubmit").addEventListener("click", async () => {
@@ -96,13 +112,41 @@ $("#btnSubmit").addEventListener("click", async () => {
   let actorNames = inputFields.map((f) => f.value.trim());
   if (actorNames.includes("")) return;
   let intersection = await getActorMovieIntersection(actorNames);
-  if (intersection.length === 0) {
-    $("#results").innerHTML = "No movies found for selected actors.";
-  } else {
-    console.log(intersection);
-    $("#results").innerHTML = intersection.map(getMovieHTML).join("");
-  }
+  state.movies = intersection;
+  render();
 });
+
+function render () {
+  // Rendering movies
+  if (state.movies.length === 0) {
+    $("#resultsCard").innerHTML = "No movies found for selected actors.";
+    $("#resultsTable").innerHTML = "No movies found for selected actors.";
+  } else {
+    $("#resultsCard").innerHTML = state.movies.map(getMovieCardHTML).join("");
+    $("#resultsTable").innerHTML = state.movies.map(getMovieTableHTML).join("");
+  }
+  // Choosing view
+  if (state.view === "card") {
+    $("#resultsCard").style.display = "flex";
+    $("#resultsTable").style.display = "none";
+  }
+  else {
+    $("#resultsCard").style.display = "none";
+    $("#resultsTable").style.display = "block";
+  }
+}
+  
+// View controls
+// On click, changes the view to the opposite of what it currently is
+$("#rbCardView").addEventListener("click", () => {
+  state.view = "card";
+  render();
+});
+$("#rbTableView").addEventListener("click", () => {
+  state.view = "table";
+  render();
+});
+
 // Input count controls
 // On click, creates an input element and assigns it to "input", the input needs to have a placeholder element "Input Actor Name" for the input box to show the text, and the input element is appended to the #actor_input id.
 $("#btnAdd").addEventListener("click", () => {
